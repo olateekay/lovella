@@ -1,10 +1,16 @@
 import React from 'react';
-import './FirstTextField.css'
+import './FirstTextField.css';
+import axios from 'axios';
+
+const API_URL = 'http://love-calculator.p.rapidapi.com';
+const API_KEY = '4ca5c860b4msh5b19fe48080e408p1f6c49jsne9e041833357'
 
 class FirstTextField extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {value: ''};
+        this.state = {
+            fname: ''
+        };
         this.routeChange =  this.routeChange.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -21,6 +27,10 @@ class FirstTextField extends React.Component {
       routeChange() {
         let path = `./SecondTextField`;
         this.props.history.push(path);
+      }
+
+      componentDidMount(){
+          const url = `${API_URL}/`
       }
 
    render (){
