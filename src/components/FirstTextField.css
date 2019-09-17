@@ -1,0 +1,15 @@
+.text {
+    text-align: center;
+    color: #e455e4;
+    margin-top: 20%;
+    font-family: Raleway;
+  }
+
+  .form {
+    border-radius: 25px;
+    color: #f4c4f3;
+    display: inline-block;
+    padding: 10px 50px;
+    margin-left: 43%;
+    margin-top:0%
+}
