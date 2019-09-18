@@ -9,6 +9,7 @@ class SecondTextField extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            fname: props.location.state.fname,
             sname: ''
         };
         this.routeChange =  this.routeChange.bind(this);
@@ -17,7 +18,7 @@ class SecondTextField extends React.Component {
       }
     
       handleChange(event) {
-        this.setState({value: event.target.value});
+        this.setState({sname: event.target.value});
       }
     
       handleSubmit(event) {
@@ -25,8 +26,9 @@ class SecondTextField extends React.Component {
         event.preventDefault();
       }
       routeChange() {
+        const { fname, sname } = this.state;
         let path = `./LandingPage`;
-        this.props.history.push(path);
+        this.props.history.push(path, { fname, sname });
       }
 
      componentDidMount(){
