@@ -9,8 +9,7 @@ class FirstTextField extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            fname: '',
-            value: ''
+            fname: ''
         };
         this.routeChange =  this.routeChange.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -18,7 +17,7 @@ class FirstTextField extends React.Component {
       }
     
       handleChange(event) {
-        this.setState({value: event.target.value});
+        this.setState({fname: event.target.value});
       }
     
       handleSubmit(event) {
@@ -31,7 +30,7 @@ class FirstTextField extends React.Component {
       }
       
       componentDidMount(){
-          const url = `${API_URL}/fname`;
+          const url = `${API_URL, API_KEY}/fname`;
           axios.post(url, { fname:this.state.fname })
       .then(res => {
         console.log(res);
@@ -42,10 +41,10 @@ class FirstTextField extends React.Component {
    render (){
        return(
            <div>
-               <h1 className='text'>Please enter the first name</h1>
+             <h1 className='text'>Please enter the first name</h1>
              <form className='form'onSubmit={this.handleSubmit}>
              <label>
-             <input type="text" value={this.state.fname} onChange={this.handleChange} />
+             <input type="text" id="fname" value={this.state.fname} onChange={this.handleChange} />
              </label>
              <input type="submit" value="Submit" onClick={this.routeChange} />
            </form>
