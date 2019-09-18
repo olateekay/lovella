@@ -9,7 +9,8 @@ class FirstTextField extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            fname: ''
+            fname: '',
+            value: ''
         };
         this.routeChange =  this.routeChange.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -28,9 +29,14 @@ class FirstTextField extends React.Component {
         let path = `./SecondTextField`;
         this.props.history.push(path);
       }
-
+      
       componentDidMount(){
-          const url = `${API_URL}/`
+          const url = `${API_URL}/fname`;
+          axios.post(url, { fname:this.state.fname })
+      .then(res => {
+        console.log(res);
+        console.log(res.data);
+      })
       }
 
    render (){
@@ -39,7 +45,7 @@ class FirstTextField extends React.Component {
                <h1 className='text'>Please enter the first name</h1>
              <form className='form'onSubmit={this.handleSubmit}>
              <label>
-             <input type="text" value={this.state.value} onChange={this.handleChange} />
+             <input type="text" value={this.state.fname} onChange={this.handleChange} />
              </label>
              <input type="submit" value="Submit" onClick={this.routeChange} />
            </form>
