@@ -16,10 +16,16 @@ class Home extends React.Component {
   render() {
     return (
       <div className='wrapper'>
-        <header
+        <section
           id="top"
           className="header"
-          style={{ backgroundImage: `url(${BG})` }}
+          style={{ backgroundImage: `url(${BG})` ,  
+                   width: "100%",
+                   height: "550px",
+                   backgroundPosition: 'center',
+                   backgroundSize: 'cover',
+                   backgroundRepeat: 'no-repeat'
+                  }}
         >
           <div className="Main" >
             <h1 className="App">
@@ -28,7 +34,7 @@ class Home extends React.Component {
             <button className="button" style={{ fontSize: '100%' }}
               onClick={this.routeChange}>Begin Here</button>
           </div>
-        </header>
+        </section>
       </div>
     );
   }

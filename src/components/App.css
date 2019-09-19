@@ -1,14 +1,15 @@
 .App {
   text-align: center;
-  color: #e455e4;
+  color: white;
+  border: black;
   margin-top: 20%;
   font-family: Raleway;
 }
 
 .button {
-    border: 1px solid #e455e4;
+    border: 1px solid red;
     border-radius: 25px;
-    color: #f4c4f3;
+    color: black;
     display: inline-block;
     padding: 10px 50px;
     margin-left: 43%;
@@ -16,13 +17,11 @@
 }
 
 .button:hover {
-  background-color: #e455e4; 
-  color: white;
+  background-color: red; 
+  color: pink;
 }
 
-.Main {
-  
-}
+
 
 
 
