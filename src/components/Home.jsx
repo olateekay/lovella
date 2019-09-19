@@ -1,10 +1,11 @@
 import React from 'react';
 import './App.css';
+import BG from '../media/beautiful-bloom-blooming-697259.jpg';
 
 class Home extends React.Component {
   constructor(props) {
     super(props);
-    
+
     this.routeChange = this.routeChange.bind(this);
   }
 
@@ -14,15 +15,23 @@ class Home extends React.Component {
   }
   render() {
     return (
-     <div className="Main">
-       <h1 className="App">
-      Welcome to LOVELLA! Your journey in love begins here!
-      </h1>
-      <button className="button" style={{fontSize:'100%'}}
-      onClick={this.routeChange}>Begin Here</button>
-     </div>
+      <div className='wrapper'>
+        <header
+          id="top"
+          className="header"
+          style={{ backgroundImage: `url(${BG})` }}
+        >
+          <div className="Main" >
+            <h1 className="App">
+              Welcome to LOVELLA! Your journey in love begins here!
+            </h1>
+            <button className="button" style={{ fontSize: '100%' }}
+              onClick={this.routeChange}>Begin Here</button>
+          </div>
+        </header>
+      </div>
     );
   }
-}  
+}
 
 export default Home;
