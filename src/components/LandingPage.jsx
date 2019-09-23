@@ -18,8 +18,13 @@ class LandingPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            loading: true
+            loading: true,
+            fname:this.props.location.state.fname,
+            sname:this.props.location.state.sname,
+            percentage:this.props.location.state.percentage,
+            results:this.props.location.state.results
         }
+        this.routeChange = this.routeChange.bind(this);
     }
 
     componentDidMount() {
@@ -47,6 +52,11 @@ class LandingPage extends React.Component {
                 console.log(res.data);
             })
     }
+    routeChange() {
+        const { fname, sname ,percentage,results} = this.state;
+        let path = `./ResultsPage`;
+        this.props.history.push(path, { fname, sname ,percentage,results});
+      }
 
     render() {
         console.log(this.props)
@@ -57,7 +67,7 @@ class LandingPage extends React.Component {
                     <ClipLoader
                         css={override}
                         sizeUnit={"px"}
-                        size={150}
+                        size={100}
                         color={'#123abc'}
                         loading={this.state.loading}
                     />
