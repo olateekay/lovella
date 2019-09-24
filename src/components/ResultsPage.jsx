@@ -1,26 +1,25 @@
 import React from 'react';
+import './FirstTextField.css';
 
 class ResultsPage extends React.Component {
     constructor(props){
         super(props);
 
-    //     this.state = {
-    //         fname: props.location.state.fname,
-    //         sname: props.location.state.sname,
-    //         percentage: props.location.state.percentage,
-    //         result: props.location.state.result
-    //     };
-    // this.routeChange = this.routeChange.bind(this);
+        this.state = {
+            result: props.location.state.result
+        };
+        console.log(this.props)
     }
 
    render (){
+       const { result } = this.state;
        return(
-           <div>
-              {/* <h1>Results</h1> 
-              <h3>First Name:{this.props.location.state.fname}</h3>
-              <h3>Second Name:{this.props.location.state.name}</h3>
-              <h3>Percentage:{this.props.location.state.rcentage}</h3>
-              <h3>Remark:{this.props.location.state.result}</h3> */}
+           <div className='text'>
+              <h1>Results</h1> 
+              <h3>First Name:{result.fname}</h3>
+              <h3>Second Name:{result.sname}</h3>
+              <h3>Percentage:{result.percentage}</h3>
+              <h3>Remark:{result.result}</h3>
            </div>
        );
    }

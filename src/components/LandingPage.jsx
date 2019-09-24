@@ -19,10 +19,10 @@ class LandingPage extends React.Component {
         super(props);
         this.state = {
             loading: true,
-            fname:this.props.location.state.fname,
-            sname:this.props.location.state.sname,
-            percentage:this.props.location.state.percentage,
-            results:this.props.location.state.results
+            isError: false,
+            fname: this.props.location.state.fname,
+            sname: this.props.location.state.sname,
+            percentage: this.props.location.state.percentage
         }
         this.routeChange = this.routeChange.bind(this);
     }
@@ -48,30 +48,49 @@ class LandingPage extends React.Component {
         const url = `${API_URL}getPercentage`;
         axios.get(url, { headers: settings, params: param })
             .then(res => {
-                console.log(res);
+                console.log(res)
+                if (res.status === 200) {
+                    this.routeChange(res.data)
+                } else {
+                    this.setState({ isError: true, loading: false });
+                }
+                if(res == undefined){
+                    this.setState({ isError: true, loading: false });
+                }
+                console.log("full response =>:", res);
                 console.log(res.data);
-            })
+            }).catch(error => this.setState({ isError: true, loading: false }))
     }
-    routeChange() {
-        const { fname, sname ,percentage,results} = this.state;
+    routeChange(data) {
         let path = `./ResultsPage`;
-        this.props.history.push(path, { fname, sname ,percentage,results});
+        this.props.history.push(path, { result: data });
+    }
+    routeChanges() {
+        let path = `./FirstTextField`;
+        this.props.history.push(path);
       }
 
     render() {
         console.log(this.props)
+        const { loading, isError } = this.state;
         return (
             <div>
                 <h1 className='text'>Lovella is working its magic!</h1>
-                <div className='sweet-loading'>
+                {loading && <div className='sweet-loading'>
                     <ClipLoader
                         css={override}
                         sizeUnit={"px"}
                         size={100}
                         color={'#123abc'}
-                        loading={this.state.loading}
+                        loading={loading}
                     />
-                </div>
+                </div>}
+
+                {isError && <div>
+                    <h2 className='text'>An error occured!!</h2>
+                    <button className="button" style={{ fontSize: '100%' }}
+                     onClick={this.routeChanges()}>Try again</button>
+                    </div>}
             </div>
         );
     }
